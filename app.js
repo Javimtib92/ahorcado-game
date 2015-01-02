@@ -4,12 +4,12 @@
 "use strict";
 angular.module('ahorcadoGame',['ngRoute'])
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
 
         $routeProvider.when('/', {
-            templateIrl: 'partials/main.html',
+            templateUrl: 'partials/main.html',
             controller: 'mainController'
-        });
+        })
+            .otherwise({redirectTo: '/'})
 
     }])
     .controller('mainController' ['$scope', function($scope) {
