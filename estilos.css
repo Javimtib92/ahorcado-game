@@ -1,50 +1,26 @@
 .dash{
-    width:50px;
-    height: 50px;
+    width:75px;
+    height: 75px;
     display: inline-block;
-    font-size: 3rem!important;
+    margin:5px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 7px rgba(255,255,255,.5);
+    background: #e5e5e5;
 }
 html, body {
     height: 100%;
 }
 
-.jumbotron.vertical-center {
-    margin-bottom: 0;
+.ahorcado-img{
+    border:1px solid cadetblue;
+    width: 300px;
+    height: 300px;
+    margin:auto;
+    margin-bottom:20px;
 }
-
-.vertical-center {
-    min-height: 100%;  /* Fallback for vh unit */
-    min-height: 100vh; /* You might also want to use */
-
-    /* Make it a flex container */
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-
-    /* Align the bootstrap's container vertically */
-    -webkit-box-align : center;
-    -webkit-align-items : center;
-    -moz-box-align : center;
-    -ms-flex-align : center;
-    align-items : center;
-
-    /* In legacy web browsers such as Firefox 9
-       we need to specify the width of the flex container */
-    width: 100%;
-
-    /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
-       hence the bootstrap's container won't be aligned to the center anymore.
-
-       Therefore, we should use the following declarations to get it centered again */
-    -webkit-box-pack : center;
-    -moz-box-pack : center;
-    -ms-flex-pack : center;
-    -webkit-justify-content : center;
-    justify-content : center;
+.char{
+    display: inline-block;
 }
-.container{
-    background-color: #ffffff;
-    height: 500px;
+.char-container{
+    clear:both;
 }
