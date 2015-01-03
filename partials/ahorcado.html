@@ -1,7 +1,11 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center">{{palabraSecreta}}!</h1>
+<div class="jumbotron vertical-align">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center vertical-center">
+                    <p class="dash" ng-repeat="dash in dashArray track by $index">{{dash}}</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
