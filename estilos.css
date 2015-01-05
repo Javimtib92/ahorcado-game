@@ -1,26 +1,77 @@
 .dash{
-    width:75px;
-    height: 75px;
+    width:50px;
+    height: 50px;
     display: inline-block;
-    margin:5px;
     border-radius: 5px;
     box-shadow: inset 0 0 0 7px rgba(255,255,255,.5);
     background: #e5e5e5;
+    text-align: left;
+    margin: 5px;
 }
 html, body {
     height: 100%;
 }
 
 .ahorcado-img{
-    border:1px solid cadetblue;
     width: 300px;
     height: 300px;
     margin:auto;
-    margin-bottom:20px;
+    margin-bottom:50px!important;
 }
 .char{
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem!important;
 }
 .char-container{
     clear:both;
+}
+
+.ahorcado-img {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin: 26px auto 0;
+  max-width: 550px;
+  min-height: 300px;
+  padding: 24px;
+  position: relative;
+  width: 80%;
+}
+.ahorcado-img:before, .letter:after {
+  content: "";
+  height: 98%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+.ahorcado-img:before {
+  background: #fafafa;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  left: -5px;
+  top: 4px;
+  transform: rotate(-2.5deg);
+}
+.ahorcado-img:after {
+  background: #f6f6f6;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  right: -3px;
+  top: 1px;
+  transform: rotate(1.4deg);
+}
+
+
+
+
+
+
+
+
+
+
+.dash-container {
+    width: 100%;
+    text-align: center;
 }

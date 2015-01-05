@@ -1,14 +1,15 @@
-<div class="container" style="margin-top: 125px">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="text-center vertical-center">
-                <div class="ahorcado-img">
-
-                </div>
+            <div class="ahorcado-img"></div>
+        </div>
+        <div class="dash-container">
                 <div class="dash" ng-repeat="letra in palabraSecretaArray track by $index"></div>
-                <div class="char-container">
-                    <h3 class="char" ng-repeat="char in alphabet track by $index">{{char}}</h3>
-                </div>
+            </div>
+        <div class="col-md-offset-3 col-md-6" style="margin-top:25px;">
+            
+            <div class="char-container col-md-offset-1 col-md-10">
+                <a class="char btn btn-default" ng-repeat="char in alphabet track by $index">{{char}}</a>
             </div>
         </div>
     </div>
