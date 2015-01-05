@@ -4,12 +4,14 @@
             <div class="ahorcado-img"></div>
         </div>
         <div class="dash-container">
-                <div class="dash" ng-repeat="letra in palabraSecretaArray track by $index"></div>
+                <div class="dash" ng-repeat="letra in palabraSecretaArray track by $index">
+                    <div class="">{{fillerArray[$index]}}</div>
+                </div>
             </div>
         <div class="col-md-offset-3 col-md-6" style="margin-top:25px;">
             
             <div class="char-container col-md-offset-1 col-md-10">
-                <a class="char btn btn-default" ng-repeat="char in alphabet track by $index">{{char}}</a>
+                <a class="char btn btn-default" ng-repeat="char in alphabet track by $index" ng-click="submitLetter(char)">{{char}}</a>
             </div>
         </div>
     </div>
