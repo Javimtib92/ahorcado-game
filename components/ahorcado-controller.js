@@ -5,6 +5,9 @@ angular.module('ahorcadoController',[])
         $scope.palabraSecretaArray = $scope.palabraSecreta.split("");
         $scope.fillerArray = [];
         $scope.errors = [];
+        $scope.numErrors = 0;
+        $scope.points = 200;
+        
         
         $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
             'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R',
@@ -17,6 +20,7 @@ angular.module('ahorcadoController',[])
                     if($scope.palabraSecretaArray[i] === letter.toLowerCase()) {
                         $scope.fillerArray[i] = letter;  
                         error = false;
+                        $scope.points += 20;
                     }
                 }
             }
@@ -31,6 +35,8 @@ angular.module('ahorcadoController',[])
                 
                 if(!finded) {
                     $scope.errors.push(letter);
+                    $scope.numErrors++;
+                    $scope.points -= 10;
                 } 
             }
         };

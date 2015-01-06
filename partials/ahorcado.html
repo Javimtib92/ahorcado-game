@@ -1,11 +1,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="ahorcado-img col-md-offset-3 col-md-7">
+            <div class="col-md-3">
+                <h1 class="game-text">Points: {{points}}</h1>
+            </div>
+            <div class="ahorcado-img col-md-7">
                 <svg class="svg-img"></svg>
             </div>
-            <div class="col-md-offset-1 col-md-1">
-                <h1 class="error" ng-repeat="error in errors track by $index">{{error}}</h1>
+            <div class="col-md-offset-1 col-md-2">
+                <h1 class="game-text">Errors: {{numErrors}}</h1>
+                <h2 class="game-text" ng-repeat="error in errors track by $index">{{error}}</h2>
             </div>
         </div>
         <div class="dash-container">
