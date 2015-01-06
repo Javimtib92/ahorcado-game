@@ -6,9 +6,14 @@ angular.module('appController',[])
     .controller('mainController', ['$scope', 'appFactory', '$location', function($scope, appFactory, $location) {
 
         $scope.palabraSecreta = appFactory.getPalabraSecreta();
-
+        var spaceRegExp = /^[a-zA-Z]+(\s+[a-zA-Z]?)?$/;
+        
         $scope.insertarPalabraSecreta = function() {
-            appFactory.setPalabraSecreta($scope.palabraSecreta);
-            $location.path('/game');
+            if(spaceRegExp.test($scope.palabraSecreta)) {
+                appFactory.setPalabraSecreta($scope.palabraSecreta);
+                $location.path('/game');
+            } else {
+                console.log("palabra contiene espacios");
+            }
         }
     }]);

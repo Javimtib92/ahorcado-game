@@ -2,7 +2,7 @@
  * Created by javier on 2/01/15.
  */
 "use strict";
-angular.module('ahorcadoGame',['ngRoute', 'appController', 'ahorcadoFactory', 'ahorcadoController'])
+angular.module('ahorcadoGame',['ngRoute', 'appController', 'ahorcadoFactory', 'ahorcadoController', 'svgPath'])
     .config(['$routeProvider', function($routeProvider) {
 
         $routeProvider

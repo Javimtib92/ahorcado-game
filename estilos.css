@@ -80,3 +80,10 @@ html, body {
     color:#7f8c8d;
     font-family: 'Pompiere', cursive;
 }
+
+
+.error {
+    font-size: 2rem;
+    display: inline-block!important;
+    margin: 10px;
+}

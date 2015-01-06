@@ -1,15 +1,37 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="col-md-3">
+            <div class="col-md-offset-1 col-md-2">
                 <h1 class="game-text">Points: {{points}}</h1>
             </div>
             <div class="ahorcado-img col-md-7">
-                <svg class="svg-img"></svg>
+                <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+                     xmlns:cc="http://creativecommons.org/ns#"
+                     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                     xmlns:svg="http://www.w3.org/2000/svg"
+                     xmlns="http://www.w3.org/2000/svg"
+                     version="1.1"
+                     width="550"
+                     height="300"
+                     id="svg3106">
+                    <defs id="defs3108" />
+                    <metadata id="metadata3111">
+                        <rdf:RDF>
+                            <cc:Work rdf:about="">
+                                <dc:format>image/svg+xml</dc:format>
+                                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                                <dc:title></dc:title>
+                            </cc:Work>
+                        </rdf:RDF>
+                    </metadata>
+                    <g transform="matrix(0.63447079,0,0,0.56712773,79.079225,9.8992451)" id="layer1" style="fill:#808080">
+                        <path ng-repeat="path in svg" d={{path.d}} id={{path.id}} style={{path.style}} />
+                    </g>
+                </svg>
             </div>
             <div class="col-md-offset-1 col-md-2">
                 <h1 class="game-text">Errors: {{numErrors}}</h1>
-                <h2 class="game-text" ng-repeat="error in errors track by $index">{{error}}</h2>
+                <h2 class="game-text error" ng-repeat="error in errors track by $index">{{error}}</h2>
             </div>
         </div>
         <div class="dash-container">

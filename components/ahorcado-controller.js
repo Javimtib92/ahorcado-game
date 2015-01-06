@@ -1,13 +1,14 @@
 "use strict";
 angular.module('ahorcadoController',[])
-    .controller('gameController', ['$scope', 'appFactory', function($scope, appFactory) {
+    .controller('gameController', ['$scope', 'appFactory', 'svgPathFactory', function($scope, appFactory, svgPathFactory) {
         $scope.palabraSecreta = appFactory.getPalabraSecreta();
         $scope.palabraSecretaArray = $scope.palabraSecreta.split("");
         $scope.fillerArray = [];
         $scope.errors = [];
         $scope.numErrors = 0;
         $scope.points = 200;
-        
+        $scope.svg = [];
+        var pathsArray = svgPathFactory;
         
         $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
             'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R',
@@ -37,7 +38,17 @@ angular.module('ahorcadoController',[])
                     $scope.errors.push(letter);
                     $scope.numErrors++;
                     $scope.points -= 10;
-                } 
+                }
+                
+                drawImagePath();
             }
         };
+        
+        
+        var drawImagePath = function() {
+            $scope.svg.push(pathsArray[$scope.svg.length]);
+        }
+        
+        
+        
     }]);
