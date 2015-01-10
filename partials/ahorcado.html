@@ -10,22 +10,18 @@
                      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                      xmlns:svg="http://www.w3.org/2000/svg"
                      xmlns="http://www.w3.org/2000/svg"
+                     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                      version="1.1"
                      width="550"
                      height="300"
-                     id="svg3106">
-                    <defs id="defs3108" />
-                    <metadata id="metadata3111">
-                        <rdf:RDF>
-                            <cc:Work rdf:about="">
-                                <dc:format>image/svg+xml</dc:format>
-                                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-                                <dc:title></dc:title>
-                            </cc:Work>
-                        </rdf:RDF>
-                    </metadata>
-                    <g transform="matrix(0.63447079,0,0,0.56712773,79.079225,9.8992451)" id="layer1" style="fill:#808080">
-                        <path ng-repeat="path in svg" d={{path.d}} id={{path.id}} style={{path.style}} />
+                     id="svg3106"
+                     inkscape:version="0.48.4 r9939"
+                     sodipodi:docname="ahorcado-3.svg">
+                    <g transform="matrix(0.63447079,0,0,0.56712773,79.079225,9.8992451)"
+                       id="layer1"
+                       style="fill:#808080">
+                        <path class="{{path.class}}" ng-repeat="path in svg" d="{{path.d}}"></path>
                     </g>
                 </svg>
             </div>
@@ -36,7 +32,7 @@
         </div>
         <div class="dash-container">
                 <div class="dash" ng-repeat="letra in palabraSecretaArray track by $index">
-                    <div class="">{{fillerArray[$index]}}</div>
+                    <div class="">{{letrasAcertadas[$index]}}</div>
                 </div>
             </div>
         <div class="col-md-offset-3 col-md-6" style="margin-top:25px;">

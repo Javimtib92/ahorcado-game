@@ -87,3 +87,26 @@ html, body {
     display: inline-block!important;
     margin: 10px;
 }
+
+.path{
+    stroke-dasharray: 800;
+    stroke-dashoffset:0;
+    -webkit-animation: dash 2s linear forwards;
+    -o-animation: dash 2s linear forwards;
+    animation: dash 2s linear forwards;
+    
+}
+
+@-webkit-keyframes dash {
+    from {
+        stroke-dashoffset:800;
+    }
+    
+    to {
+        stroke-dashoffset:0;
+    }
+}
+
+.error-message {
+    
+}

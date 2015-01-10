@@ -10,9 +10,16 @@ angular.module('ahorcadoGame',['ngRoute', 'appController', 'ahorcadoFactory', 'a
                 templateUrl: 'partials/main.html',
                 controller: 'mainController'
             })
+            .when('/palabra', {
+                templateUrl: 'partials/palabra.html',
+                controller: 'mainController'
+            })
             .when('/game', {
                 templateUrl: 'partials/ahorcado.html',
                 controller: 'gameController'
+            })
+            .when('/game/error', {
+                templateUrl: 'partials/error.html'
             })
             .otherwise({redirectTo: '/'});
     }]);

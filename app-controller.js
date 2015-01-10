@@ -10,7 +10,7 @@ angular.module('appController',[])
         
         $scope.insertarPalabraSecreta = function() {
             if(spaceRegExp.test($scope.palabraSecreta)) {
-                appFactory.setPalabraSecreta($scope.palabraSecreta);
+                appFactory.setPalabraSecreta($scope.palabraSecreta.toLowerCase());
                 $location.path('/game');
             } else {
                 console.log("palabra contiene espacios");
