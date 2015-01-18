@@ -1,40 +1,40 @@
-<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>El ahorcado</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--[if gt IE 8]><!-->
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
 
-        <link rel="stylesheet" href="bootstrap.css">
-        
-        <link rel="stylesheet" href="estilos.css">
-        
-        <link rel="stylesheet" href="normalize.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    </head>
-    <body ng-app="ahorcadoGame">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <div ng-view></div>
+  <title>El ahorcado</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="estilos.css" type="text/css" />
+  <link rel="stylesheet" href="normalize.css" type="text/css" />
+  <script src="js/vendor/modernizr-2.6.2.min.js" type="text/javascript">
+</script>
+</head>
 
-        <!--[if lt IE 7]>
+<body ng-app="ahorcadoGame" ng-controller="mainController">
+  <div ng-view=""></div>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-    <script src="js/vendor/jquery-1.10.2.min.js"></script>
-    <script src="js/vendor/angular-1.2.28/angular.js"></script>
-    <script src="js/vendor/angular-1.2.28/angular-route.js"></script>
-    <script src="app.module.js"></script>
-    <script src="app.routes.js"></script>
-    <script src="word/wordController.js"></script>
-    <script src="common/services/palabra-secreta-factory.js"></script>
-    <script src="game/gameController.js"></script>
-    <script src="game/gameDirective.js"></script>
-    <script src="game/svgPathFactory.js"></script>
-
-    </body>
+    <script src="js/vendor/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="js/vendor/angular-1.2.28/angular.js" type="text/javascript"></script>
+    <script src="js/vendor/angular-1.2.28/angular-route.js" type="text/javascript"></script>
+    <script src="app.module.js" type="text/javascript"></script>
+    <script src="app.routes.js" type="text/javascript"></script>
+    <script src="word/wordController.js" type="text/javascript"></script>
+    <script src="common/services/palabra-secreta-factory.js" type="text/javascript"></script>
+    <script src="game/gameController.js" type="text/javascript"></script>
+    <script src="game/gameDirective.js" type="text/javascript"></script>
+    <script src="game/svgPathFactory.js" type="text/javascript"></script>
+</body>
 </html>

@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-offset-1 col-md-2">
+                <h1 class="game-text">Points: {{points}}</h1>
+            </div>
+            
+            <div game-image></div>
+            
+            <div class="col-md-offset-1 col-md-2">
+                <h1 class="game-text">Errors: {{numErrors}}</h1>
+                <h2 class="game-text error" ng-repeat="error in errors track by $index">{{error}}</h2>
+            </div>
+        </div>
+        <div class="dash-container">
+            <letras-descubiertas palabra="palabraSecreta"></letras-descubiertas>
+        </div>
+        <div class="col-md-offset-3 col-md-6" style="margin-top:25px;">
+            <div class="char-container col-md-offset-1 col-md-10">
+                <a character ng-repeat="char in alphabet track by $index" submit="submitLetter(char, this)" text="char"></a>
+            </div>
+        </div>
+    </div>
+</div>
