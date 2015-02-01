@@ -1,4 +1,7 @@
+#ahorcado-game
+
 <b>Jugadores:</b> 2
+<br>
 <b>Objetivo:</b> Descubrir la palabra secreta escogida por el primer jugador.
 
 El primer jugador escribe una palabra que debe adivinar el segundo jugador. 
