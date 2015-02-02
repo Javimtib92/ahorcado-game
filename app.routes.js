@@ -23,8 +23,13 @@
                     templateUrl: 'game/gameView.html',
                     controller: 'gameController'
                 })
-                .when('/game/error', {
-                    templateUrl: 'error/errorView.html'
+                .when('/game/gameover', {
+                    templateUrl: 'game/gameover/gameoverView.html',
+                    controller: 'gameController'
+                })
+                .when('/game/congratulations', {
+                    templateUrl: 'game/congratulations/congratulations.html',
+                    controller: 'gameController'
                 })
                 .otherwise({redirectTo: '/'});
         }])

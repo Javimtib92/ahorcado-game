@@ -97,6 +97,11 @@ html, body {
   margin: 10px;
 }
 
+.face_img{
+    width: 250px;
+    height: 250px;
+}
+
 .game-text {
   color:#7f8c8d;
   font-family: 'Pompiere', cursive;
@@ -129,7 +134,26 @@ html, body {
     
 }
 
-.play-btn{
-    background-color: #F22613;!important
-    color:white;
+.wet-asphalt-flat-button {
+  position: relative!important;
+  vertical-align: top!important;
+  width: 100%!important;
+  height: 60px!important;
+  padding: 0!important;
+  font-size: 22px!important;
+  color: white!important;
+  text-align: center!important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25)!important;
+  background: #34495e!important;
+  border: 0!important;
+  border-bottom: 2px solid #263849!important;
+  cursor: pointer!important;
+  -webkit-box-shadow: inset 0 -2px #263849!important;
+  box-shadow: inset 0 -2px #263849!important;
+}
+.wet-asphalt-flat-button:active {
+  top: 1px!important;
+  outline: none!important;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
 }

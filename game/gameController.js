@@ -36,6 +36,8 @@
              * @type {string[]}
              * */
         $scope.errors = [];
+        
+        var aciertos = 0;
 
             /** Emmagatzema les lletres del alfabet que utilitzarem per la
              * seva visualització gràfica.
@@ -50,7 +52,9 @@
              * a la paraula llavors s'afegeixen 20 punts. Si no es troba, la lletra es
              * afegida al recompte de lletres errònees i es dibuixa una part del ninot.
              *
-             * Si el nombre d'errors es major al màxim permés llavors redirecciona a la pàgina d'error
+             * Si el nombre d'errors es major al màxim permés llavors redirecciona a la pàgina d'error,
+             * Si el nombre de lletres acertades es igual al nombre de lletres que conté la paraula aleshores
+             * el jugador l'ha adivinada y redireccionam a la vista amb el missatge d'enhorabona.
              *
              * @param lletra Lletra que eligeix el jugador a través del teclat gràfic
              * @param element Botó pitjat que conté la lletra. En ser pitjat, aquest prendrà
@@ -72,7 +76,11 @@
             }
             
             if($scope.errors.length === MAX_ERRORS) {
-                $location.url('/game/error');
+                $location.url('/game/gameover');
+            }
+            
+            if($scope.palabraSecreta.length === aciertos) {
+                $location.url('/game/congratulations');
             }
         };
 
@@ -94,6 +102,7 @@
                 if($scope.palabraSecreta[i] === lletra.toLowerCase()) {
                     palabraSecreta.pushToLetrasAcertadas(lletra,i);
                     found = true;
+                    aciertos++;
                 }
             }
             return found;
@@ -111,5 +120,10 @@
             $scope.numErrors++;
             $scope.points -= 10;
         };
+
+            /** Recarrega el navegador per mostrar la pàgina principal */
+        $scope.refresh = function() {
+            location.reload();
+        }
     }]);
 }());

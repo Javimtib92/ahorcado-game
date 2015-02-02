@@ -37,7 +37,7 @@
              * Error a mostrar si la paraula conté espais en blanc
              */
         var errorLog = function() {
-            console.log('palabra contiene espacios');
+            alert('La palabra no puede contener espacios en blanco');
         };
     }]);
 }());
