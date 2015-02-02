@@ -35,7 +35,7 @@ describe('gameControllerModule module', function() {
     it('should have a method to submit a letter', function() {
       var controller = gameController();
       scope.palabraSecreta = ['p','r','u','e','b','a'];
-      scope.acertadas = palabraSecreta.getPalabrasAcertadas();
+      scope.acertadas = palabraSecreta.getLetrasAcertadas();
         
       // Test letra correcta
       scope.submitLetter('p', this);

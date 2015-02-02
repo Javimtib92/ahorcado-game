@@ -3,6 +3,11 @@
  */
 (function() {
     'use strict';
+
+    /**
+     * Gestiona totes les rutes del programa i mostra el contingut
+     * que pertany a cada ruta.
+     */
     angular.module('appRoutesModule',[])
         .config(['$routeProvider', function($routeProvider) {
 

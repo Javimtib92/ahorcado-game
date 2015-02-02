@@ -4,17 +4,35 @@
     angular.module('svgPathModule',[])
         .factory('svgPathFactory', function() {
 
-        var object = {
+            /**
+             * Objecte que conté totes les parts per dibuixar el ninot, els dibuixa, i
+             * emmagatzema les parts que s'han dibuixat. Injectarem aquest objecte a
+             * gameDirective i a gameController
+             *
+             * @type {{pathsFilled: Array, drawImagePath: Function, get: Function, pathsArray: {d: string, duration: number}[]}}
+             */
+        var svg = {
+                /** Parts que s'han dibuixat */
             pathsFilled : [],
 
+                /**
+                 * Dibuixa una part del ninot
+                 */
             drawImagePath : function() {
                     this.pathsFilled.push(this.pathsArray[this.pathsFilled.length]);
             },
 
+                /**
+                 * @returns {*} les parts del ninot que s'han dibuixat
+                 */
             get: function() {
                 return this.pathsFilled;
             },
 
+                /**
+                 * Conté la informació del dibuix
+                 * @type {object[]}
+                 */
             pathsArray : [{
                     'd': 'M 83.249162,448.09302 C 87.337474,378.41887 87.31164,308.57668 87.26468,238.80794 86.91005,186.01505 86.255496,133.20501 83.953647,80.455533 c -0.117745,-2.154184 -0.221321,-4.309189 -0.353234,-6.462552 -0.07237,-1.181319 -0.162632,-2.361543 -0.25958,-3.541099 -0.04566,-0.555512 -0.09089,-1.111677 -0.168205,-1.663673 -0.01769,-0.126318 -0.229598,-0.306881 -0.115894,-0.36468 17.497496,-8.894446 17.470736,-14.636708 17.128736,-7.303947 -0.0173,1.492297 -0.015,0.757686 -0.008,2.203829 0,0 -17.064322,8.694707 -17.064322,8.694707 l 0,0 c 0.0071,-1.447013 0.0094,-0.715091 -0.0079,-2.195762 -0.363403,-7.421234 -0.348503,-1.22506 17.128742,-10.151105 0.14739,-0.07527 -0.0958,0.318512 -0.1159,0.482782 -0.0747,0.609695 -0.121755,1.222582 -0.168207,1.835082 -0.09615,1.267848 -0.186388,2.536243 -0.259579,3.805624 -0.131086,2.273442 -0.23549,4.548344 -0.353235,6.822516 -2.250943,53.876765 -2.966956,107.808435 -3.311033,161.726515 -0.04601,68.40285 -0.167031,136.89069 4.015524,205.19306 0,0 -16.792463,8.55619 -16.792463,8.55619 z',
                     'duration': 1800
@@ -46,6 +64,6 @@
                 }
             ]
         };
-        return object;
+        return svg;
         });
 }());

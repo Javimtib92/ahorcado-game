@@ -22,7 +22,7 @@
                     palabra:'='
                 },
                 controller: function($scope, palabraSecreta) {
-                    $scope.letrasAcertadas = palabraSecreta.getPalabrasAcertadas();
+                    $scope.letrasAcertadas = palabraSecreta.getLetrasAcertadas();
                 },
                 template: 
                     '<div class="dash" ng-repeat="letra in palabra track by $index">' +
