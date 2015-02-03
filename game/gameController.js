@@ -36,8 +36,6 @@
              * @type {string[]}
              * */
         $scope.errors = [];
-        
-        var aciertos = 0;
 
             /** Emmagatzema les lletres del alfabet que utilitzarem per la
              * seva visualització gràfica.
@@ -62,7 +60,7 @@
              */
         $scope.submitLetter = function(lletra, element) {
             
-            var found = findLetter(lletra);
+            var found = findCharacter(lletra);
             
             if(element.active === undefined) {
                 if(found) {
@@ -79,7 +77,7 @@
                 $location.url('/game/gameover');
             }
             
-            if($scope.palabraSecreta.length === aciertos) {
+            if(areEquals($scope.palabraSecreta, $scope.acertadas)) {
                 $location.url('/game/congratulations');
             }
         };
@@ -94,7 +92,7 @@
              * @param lletra Lletra que volem cercar dins la paraula
              * @returns {boolean} Vertader si la lletra s'ha trobat dins la paraula, si no es així retorna fals
              */
-        var findLetter = function(lletra) {
+        var findCharacter = function(lletra) {
             var i;
             var found = false;
             
@@ -102,7 +100,6 @@
                 if($scope.palabraSecreta[i] === lletra.toLowerCase()) {
                     palabraSecreta.pushToLetrasAcertadas(lletra,i);
                     found = true;
-                    aciertos++;
                 }
             }
             return found;
@@ -119,6 +116,26 @@
             $scope.errors.push(lletra);
             $scope.numErrors++;
             $scope.points -= 10;
+        };
+
+            /**
+             * Compara si la paraula secreta i les lletres que hem provat tenen el mateix contingut
+             * @param palabraSecreta
+             * @param letrasAcertadas
+             * @returns {boolean} Vertader si són iguals, fals si hi ha una lletra que no hi es
+             */
+        var areEquals = function(palabraSecreta, letrasAcertadas) {
+
+            var equals = true;
+
+            for(var i = 0; i < palabraSecreta.length; i++) {
+                if(palabraSecreta[i] !== letrasAcertadas[i].toLowerCase()) {
+                    equals = false;
+                    break;
+                }
+            }
+
+            return equals;
         };
 
             /** Recarrega el navegador per mostrar la pàgina principal */
