@@ -5,8 +5,8 @@
     'use strict';
 
     /**
-     * Gestiona totes les rutes del programa i mostra el contingut
-     * que pertany a cada ruta.
+     * Manages all the routes of the program and display the content
+     * linked to each route.
      */
     angular.module('appRoutesModule',[])
         .config(['$routeProvider', function($routeProvider) {

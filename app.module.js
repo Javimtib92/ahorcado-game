@@ -2,7 +2,7 @@
     'use strict';
 
     /**
-     * Carrega tots els moduls necessaris per el programa
+     * Load all the modules necessary for the program.
      */
 
     angular.module('ahorcadoGame',[
@@ -10,7 +10,7 @@
         'appRoutesModule',
         'wordControllerModule',
         'gameControllerModule',
-        'palabraSecretaModule',
+        'secretWordModule',
         'svgPathModule',
         'gameDirectiveModule'
     ]);

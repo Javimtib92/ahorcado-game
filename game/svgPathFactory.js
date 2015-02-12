@@ -5,9 +5,9 @@
         .factory('svgPathFactory', function() {
 
             /**
-             * Objecte que conté totes les parts per dibuixar el ninot, els dibuixa, i
-             * emmagatzema les parts que s'han dibuixat. Injectarem aquest objecte a
-             * gameDirective i a gameController
+             * Object that contains all the parts to draw the hanged man, and store
+             * the parts that had been drawn. We'll inject this object in gameDirective
+             * and gameController.
              *
              * @type {{pathsFilled: Array, drawImagePath: Function, get: Function, pathsArray: {d: string, duration: number}[]}}
              */
@@ -16,21 +16,21 @@
             pathsFilled : [],
 
                 /**
-                 * Dibuixa una part del ninot
+                 * Draw part of the hanged man
                  */
             drawImagePath : function() {
                     this.pathsFilled.push(this.pathsArray[this.pathsFilled.length]);
             },
 
                 /**
-                 * @returns {*} les parts del ninot que s'han dibuixat
+                 * @returns {*} the parts of the hanged man that had been drawn
                  */
             get: function() {
                 return this.pathsFilled;
             },
 
                 /**
-                 * Conté la informació del dibuix
+                 * Contains the information of the drawing
                  * @type {object[]}
                  */
             pathsArray : [{

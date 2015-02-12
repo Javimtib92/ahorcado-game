@@ -1,25 +1,25 @@
 'use strict';
 
 describe('gameControllerModule module', function() {
-  var scope, $location, gameController, palabraSecreta, svgPathFactory;
+  var scope, $location, gameController, secretWord, svgPathFactory;
   
   beforeEach(module('gameControllerModule'));
-  beforeEach(module('palabraSecretaModule'));
+  beforeEach(module('secretWordModule'));
   beforeEach(module('svgPathModule'));
     
   describe('gameController', function(){
 
-    beforeEach(inject(function($rootScope, $controller, _$location_,_palabraSecreta_, _svgPathFactory_) {
+    beforeEach(inject(function($rootScope, $controller, _$location_,_secretWord_, _svgPathFactory_) {
         
       $location = _$location_;
-      palabraSecreta = _palabraSecreta_;
+      secretWord = _secretWord_;
       svgPathFactory = _svgPathFactory_;
       scope = $rootScope.$new();
       
       gameController = function () {
         return $controller('gameController', {
             $scope : scope,
-            palabraSecreta : palabraSecreta,
+            secretWord : secretWord,
             svgPathFactory: svgPathFactory
         });
       }
@@ -34,16 +34,16 @@ describe('gameControllerModule module', function() {
       
     it('should have a method to submit a letter', function() {
       var controller = gameController();
-      scope.palabraSecreta = ['p','r','u','e','b','a'];
-      scope.acertadas = palabraSecreta.getLetrasAcertadas();
+      scope.secretWord = ['p','r','u','e','b','a'];
+      scope.guessed = secretWord.getGuessedCharacters();
         
       // Test letra correcta
-      scope.submitLetter('p', this);
-      expect(scope.acertadas[0]).toEqual('p');
+      scope.submitCharacter('p', this);
+      expect(scope.guessed[0]).toEqual('p');
       
       // Test letra incorrecta
-      scope.submitLetter('s', this);
-      expect(scope.acertadas[1]).toBe(undefined);
+      scope.submitCharacter('s', this);
+      expect(scope.guessed[1]).toBe(undefined);
       scope.$apply();
       console.log(scope.errors);
     });

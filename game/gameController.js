@@ -1,44 +1,43 @@
 (function() {
     'use strict';
     angular.module('gameControllerModule',[])
-    .controller('gameController', ['$scope', 'palabraSecreta', 'svgPathFactory', '$location', function($scope, palabraSecreta, svgPathFactory, $location) {
+    .controller('gameController', ['$scope', 'secretWord', 'svgPathFactory', '$location', function($scope, secretWord, svgPathFactory, $location) {
 
             /**
-             * Emmagatzema la puntuació del jugador que ha d'adivinar la paraula
+             * Store the punctuation of the player who has to guess the word.
              * @type {number}
              */
         $scope.points = 200;
 
             /**
-             * Recompte de errors que es mostrarà al jugador
+             * Error count that will be displayed to the player.
              * @type {number}
              */
         $scope.numErrors = 0;
 
             /**
-             * El máxim nombre d'errors que pot cometre el jugador
+             * The max number of errors the player can make.
              * @const
              * @type {number}
              */
         var MAX_ERRORS = 7;
 
-            /** Emmagatzema la paraula en clar
+            /** Stores the secret word
              * @type {string}
              * */
-        $scope.palabraSecreta = palabraSecreta.get();
+        $scope.secretWord = secretWord.get();
 
-            /** Emmagatzema les lletres que han estat acertades
+            /** Store the character that has been guessed
              * @type {string}
              * */
-        $scope.acertadas = palabraSecreta.getLetrasAcertadas();
+        $scope.guessed = secretWord.getGuessedCharacters();
 
-            /** Emmagatzema les lletres que han estat erronees
+            /** Store the incorrect characters
              * @type {string[]}
              * */
         $scope.errors = [];
 
-            /** Emmagatzema les lletres del alfabet que utilitzarem per la
-             * seva visualització gràfica.
+            /** Store the characters of the alphabet that we'll use to display in the view
              * @type {string[]}
              */
         $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
@@ -46,27 +45,29 @@
             'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
             /**
-             * Implementa la funcionalitat de provar una lletra. Si la lletra es troba
-             * a la paraula llavors s'afegeixen 20 punts. Si no es troba, la lletra es
-             * afegida al recompte de lletres errònees i es dibuixa una part del ninot.
+             * Try a character, if is found inside the secret word the punctuation is
+             * increased in 20 points. If it's not found, the character is added into
+             * the errors container and a part of the man is drawn.
              *
-             * Si el nombre d'errors es major al màxim permés llavors redirecciona a la pàgina d'error,
-             * Si el nombre de lletres acertades es igual al nombre de lletres que conté la paraula aleshores
-             * el jugador l'ha adivinada y redireccionam a la vista amb el missatge d'enhorabona.
-             *
-             * @param lletra Lletra que eligeix el jugador a través del teclat gràfic
-             * @param element Botó pitjat que conté la lletra. En ser pitjat, aquest prendrà
-             * l'estat d'actiu i per tant no es podrà tornar a pitjar.
+             * If the number of errors is higher than the maximum allowed then we re-
+             * direct to the game over view.
+             * If the number of guessed characters is equal to the number of characters
+             * that the secret word has, then the player guessed the word so we redirect
+             * to the congratulations view.
+
+             * @param character Character that the player choose through the graphic keyboard.
+             * @param element Clicked button that contains the character. When it's clicked
+             * it will become active and therefore it can not be pressed.
              */
-        $scope.submitLetter = function(lletra, element) {
+        $scope.submitCharacter = function(character, element) {
             
-            var found = findCharacter(lletra);
+            var found = findCharacter(character);
             
             if(element.active === undefined) {
                 if(found) {
                     $scope.points += 20;
                 } else {
-                    pushError(lletra);
+                    pushError(character);
                     svgPathFactory.drawImagePath();
                 }
                 
@@ -77,28 +78,27 @@
                 $location.url('/game/gameover');
             }
             
-            if(areEquals($scope.palabraSecreta, $scope.acertadas)) {
+            if(areEquals($scope.secretWord, $scope.guessed)) {
                 $location.url('/game/congratulations');
             }
         };
 
             /**
-             * Aquesta funció comprova si la lletra que cercam coincideix amb colcuna de les
-             * lletres de la paraula. Si es així s'afageix la lletra a les lletres encertades amb
-             * la posició que te aquesta dins la paraula secreta per tal de afegir-la gràficament al lloc
-             * que li toca.
+             * Check if the character that we search matches with any of the characters of the
+             * word, if this is the case we add the character to the guessed characters with the
+             * position that has inside the secret word so we can display it in the correct place.
              *
              * @private
-             * @param lletra Lletra que volem cercar dins la paraula
-             * @returns {boolean} Vertader si la lletra s'ha trobat dins la paraula, si no es així retorna fals
+             * @param character Character that we want to search in the word
+             * @returns {boolean} True if the character was found, false if not.
              */
-        var findCharacter = function(lletra) {
+        var findCharacter = function(character) {
             var i;
             var found = false;
             
-            for(i = 0; i < $scope.palabraSecreta.length; i++) {
-                if($scope.palabraSecreta[i] === lletra.toLowerCase()) {
-                    palabraSecreta.pushToLetrasAcertadas(lletra,i);
+            for(i = 0; i < $scope.secretWord.length; i++) {
+                if($scope.secretWord[i] === character.toLowerCase()) {
+                    secretWord.pushGuessedCharacters(character,i);
                     found = true;
                 }
             }
@@ -106,30 +106,30 @@
         };
 
             /**
-             * Afegeix una lletra al contenedor de lletres errònees, afegeix un error
-             * al contador de errors i resta 10 punts a la puntuació del jugador.
+             * Adds a character to the errors container, increments the errors count and
+             * decrease by 10 the player's points.
              *
              * @private
-             * @param lletra Lletra que s'afegirà al contenedor d'errors
+             * @param character Character to be added to the errors container.
              */
-        var pushError = function(lletra) {
-            $scope.errors.push(lletra);
+        var pushError = function(character) {
+            $scope.errors.push(character);
             $scope.numErrors++;
             $scope.points -= 10;
         };
 
             /**
-             * Compara si la paraula secreta i les lletres que hem provat tenen el mateix contingut
-             * @param palabraSecreta
-             * @param letrasAcertadas
-             * @returns {boolean} Vertader si són iguals, fals si hi ha una lletra que no hi es
+             * Compare if the secret word and the characters that we've tried have the same content
+             * @param secretWord
+             * @param guessedCharacters
+             * @returns {boolean} True if they are equals, false if there's a character that it's not.
              */
-        var areEquals = function(palabraSecreta, letrasAcertadas) {
+        var areEquals = function(secretWord, guessedCharacters) {
 
             var equals = true;
 
-            for(var i = 0; i < palabraSecreta.length; i++) {
-                if(letrasAcertadas[i] == undefined || palabraSecreta[i] !== letrasAcertadas[i].toLowerCase()) {
+            for(var i = 0; i < secretWord.length; i++) {
+                if(guessedCharacters[i] == undefined || secretWord[i] !== guessedCharacters[i].toLowerCase()) {
                     equals = false;
                     break;
                 }
@@ -138,7 +138,7 @@
             return equals;
         };
 
-            /** Recarrega el navegador per mostrar la pàgina principal */
+            /** Refresh the browser */
         $scope.refresh = function() {
             location.reload();
         }

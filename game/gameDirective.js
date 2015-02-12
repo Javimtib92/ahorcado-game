@@ -14,19 +14,19 @@
                       'ng-click="submit(); active = true">{{text}}</a>'
             };
         })
-        .directive('letrasDescubiertas', function() {
+        .directive('guessedCharacters', function() {
     
             return {
                 restrict:'E',
                 scope: {
-                    palabra:'='
+                    word:'='
                 },
-                controller: function($scope, palabraSecreta) {
-                    $scope.letrasAcertadas = palabraSecreta.getLetrasAcertadas();
+                controller: function($scope, secretWord) {
+                    $scope.guessedCharacters = secretWord.getGuessedCharacters();
                 },
                 template: 
-                    '<div class="dash" ng-repeat="letra in palabra track by $index">' +
-                        '<div>{{letrasAcertadas[$index]}}</div>' +
+                    '<div class="dash" ng-repeat="character in word track by $index">' +
+                        '<div>{{guessedCharacters[$index]}}</div>' +
                     '</div>'
             };
         })

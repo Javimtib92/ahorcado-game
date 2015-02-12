@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular.module('wordControllerModule',[])
-    .controller('wordController', ['$scope', 'palabraSecreta', '$location', function($scope, palabraSecreta, $location) {
+    .controller('wordController', ['$scope', 'secretWord', '$location', function($scope, secretWord, $location) {
 
             /**
              * Expressió regular per una paraula sense espais
@@ -15,9 +15,9 @@
              * Si la paraula no conté espais la insereix i redirecciona a la
              * següent vista. Si en té llança un error.
              */
-        $scope.insertarPalabraSecreta = function() {
-            if(hasNoWhiteSpaces($scope.palabraSecreta)) {
-                palabraSecreta.set($scope.palabraSecreta);
+        $scope.submitSecretWord = function() {
+            if(hasNoWhiteSpaces($scope.secretWord)) {
+                secretWord.set($scope.secretWord);
                 $location.path('/game');
             } else {
                 errorLog();
