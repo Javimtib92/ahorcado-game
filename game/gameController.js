@@ -129,7 +129,7 @@
             var equals = true;
 
             for(var i = 0; i < palabraSecreta.length; i++) {
-                if(palabraSecreta[i] !== letrasAcertadas[i].toLowerCase()) {
+                if(letrasAcertadas[i] == undefined || palabraSecreta[i] !== letrasAcertadas[i].toLowerCase()) {
                     equals = false;
                     break;
                 }
